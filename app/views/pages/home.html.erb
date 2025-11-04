@@ -1,0 +1,57 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="mb-6 flex justify-center">
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <span class="text-3xl">🤖</span>
+        </div>
+      </div>
+      <h1 class="text-4xl font-bold text-white mb-3">
+        AI Knowledge Assistant
+      </h1>
+      <p class="text-lg text-slate-300">
+        Harness the power of AI to organize and access your knowledge instantly.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-slate-800 rounded-xl shadow-2xl p-8 border border-slate-700">
+      <h2 class="text-2xl font-semibold text-white mb-6">Get Started</h2>
+      
+      <!-- Sign In Button -->
+      <div class="mb-4">
+        <%= link_to new_user_session_path, class: 'block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 text-center' do %>
+          Sign In
+        <% end %>
+      </div>
+
+      <!-- Sign Up Button -->
+      <div class="mb-6">
+        <%= link_to new_user_registration_path, class: 'block w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 text-center' do %>
+          Create Account
+        <% end %>
+      </div>
+
+      <!-- Divider -->
+      <div class="relative mb-6">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-slate-600"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 bg-slate-800 text-slate-400">or continue as guest</span>
+        </div>
+      </div>
+
+      <!-- Guest Info -->
+      <p class="text-center text-slate-400 text-sm">
+        Sign up today to start organizing your knowledge with AI.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 text-center text-slate-500 text-sm">
+      <p>© 2025 AI Knowledge Assistant. All rights reserved.</p>
+    </div>
+  </div>
+</div>

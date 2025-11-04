@@ -79,3 +79,5 @@ gem 'ruby-openai'
 
 # For authentication (to be used in Task 1.3)
 gem 'devise'
+
+gem "tailwindcss-rails", "~> 4.4"
