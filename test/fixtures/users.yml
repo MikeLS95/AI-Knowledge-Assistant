@@ -6,8 +6,10 @@
 #
 one:
   email: user1@example.com
-  password: password123
+  encrypted_password: <%= BCrypt::Password.create('password123') %>
+  confirmed_at: <%= Time.current %>
 
 two:
   email: user2@example.com
-  password: password123
+  encrypted_password: <%= BCrypt::Password.create('password456') %>
+  confirmed_at: <%= Time.current %>
