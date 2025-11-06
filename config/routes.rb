@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     root "pages#home", as: :unauthenticated_root
   end
 
-  get 'pages/home', as: 'pages_home'
-  get 'dashboard/index', as: 'dashboard_index'
+  get "pages/home", as: "pages_home"
+  get "dashboard/index", as: "dashboard_index"
 end
