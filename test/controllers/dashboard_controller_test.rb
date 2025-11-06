@@ -4,7 +4,7 @@ class DashboardControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
   setup do
-    @user = users(:one)  # or create a user however you normally do
+    @user = User.create!(email: "test@example.com", password: "password123")
   end
 
   test "should get index" do
