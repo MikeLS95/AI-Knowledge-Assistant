@@ -66,18 +66,18 @@ group :test do
 end
 
 # Environment variables
-gem 'dotenv-rails', groups: [:development, :test]
+gem "dotenv-rails", groups: [ :development, :test ]
 
 # For file uploads
-gem 'aws-sdk-s3', require: false
+gem "aws-sdk-s3", require: false
 
 # For vector embeddings (PostgreSQL)
-gem 'pgvector'
+gem "pgvector"
 
 # For AI integration
-gem 'ruby-openai'
+gem "ruby-openai"
 
 # For authentication (to be used in Task 1.3)
-gem 'devise'
+gem "devise"
 
 gem "tailwindcss-rails", "~> 4.4"

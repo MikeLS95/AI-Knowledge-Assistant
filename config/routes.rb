@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   authenticated :user do
-    root 'dashboard#index', as: :authenticated_root
+    root "dashboard#index", as: :authenticated_root
   end
 
   unauthenticated do
-    root 'pages#home', as: :unauthenticated_root
+    root "pages#home", as: :unauthenticated_root
   end
 end
