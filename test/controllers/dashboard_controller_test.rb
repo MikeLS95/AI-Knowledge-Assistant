@@ -3,13 +3,8 @@ require "test_helper"
 class DashboardControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  setup do
-    @user = User.create!(email: "test@example.com", password: "password123", password_confirmation: "password123")
-  end
-
-  test "should get index" do
-    sign_in @user
+  test "should redirect to sign in when not authenticated" do
     get :index
-    assert_response :success
+    assert_redirected_to new_user_session_path
   end
 end
