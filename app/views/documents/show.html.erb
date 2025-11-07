@@ -14,10 +14,11 @@
         </div>
         <div class="flex gap-2">
           <%= link_to 'Download', download_document_path(@document), class: 'px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700' %>
-          <%= link_to 'Delete', document_path(@document), 
-              method: :delete, 
-              data: { confirm: 'Are you sure?' },
-              class: 'px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700' %>
+          <%= form_with(model: @document, method: :delete, local: true) do |form| %>
+                <%= form.submit 'Delete', 
+                    onclick: "openDeleteModal(event, this.closest('form'))",
+                    class: 'px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 border-0 cursor-pointer' %>
+            <% end %>
         </div>
       </div>
     </div>

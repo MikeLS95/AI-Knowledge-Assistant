@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   get "pages/home", as: "pages_home"
   get "dashboard/index", as: "dashboard_index"
 
-  resources :documents, only: [:index, :new, :create, :show, :destroy] do
+  resources :documents, only: [ :index, :new, :create, :show, :destroy ] do
     member do
       get :download
     end
   end
 
-  root 'pages#home'
+  root "pages#home"
 end

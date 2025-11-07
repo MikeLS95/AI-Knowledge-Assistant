@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_document, only: [:show, :download, :destroy]
-  before_action :authorize_user!, only: [:show, :download, :destroy]
+  before_action :set_document, only: [ :show, :download, :destroy ]
+  before_action :authorize_user!, only: [ :show, :download, :destroy ]
 
   def index
     @documents = current_user.documents.order(created_at: :desc)
@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
     @document = current_user.documents.build(document_params)
 
     if @document.save
-      redirect_to documents_path, notice: 'Document uploaded successfully.'
+      redirect_to documents_path, notice: "Document uploaded successfully."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,12 +25,17 @@ class DocumentsController < ApplicationController
   end
 
   def download
-    send_attachment_download_headers(@document.file, @document.title)
+    send_data(
+        @document.file.download,
+        filename: @document.file.filename.to_s,
+        type: @document.file.content_type,
+        disposition: "attachment"
+    )
   end
 
   def destroy
     @document.destroy
-    redirect_to documents_path, notice: 'Document deleted successfully.'
+    redirect_to request.referrer || dashboard_index_path, notice: "Document deleted successfully."
   end
 
   private
@@ -40,11 +45,12 @@ class DocumentsController < ApplicationController
   end
 
   def set_document
-    @document = Document.find(params[:id])
+    @document = Document.find_by(id: params[:id])
+    redirect_to dashboard_index_path, alert: "Document not found." unless @document
   end
 
   def authorize_user!
-    redirect_to documents_path, alert: 'Not authorized.' unless @document.user == current_user
+    redirect_to documents_path, alert: "Not authorized." unless @document.user == current_user
   end
 
   def send_attachment_download_headers(attachment, filename)

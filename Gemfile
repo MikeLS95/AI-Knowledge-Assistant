@@ -83,3 +83,7 @@ gem "devise"
 gem "tailwindcss-rails", "~> 4.4"
 
 gem 'docx', '~> 0.7.0'
+
+gem 'pdf-reader', '~> 2.10'
+
+gem "rubocop", "~> 1.81", :group => :development

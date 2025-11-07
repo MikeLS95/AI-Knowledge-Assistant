@@ -30,6 +30,7 @@
           <% if user_signed_in? %>
             <div class="flex items-center gap-4">
               <span class="text-slate-300"><%= current_user.email %></span>
+              <%= link_to 'Dashboard', dashboard_index_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition' %>
               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition' %>
             </div>
           <% end %>
@@ -39,6 +40,8 @@
       <main class="max-w-7xl mx-auto px-6 py-8">
         <%= yield %>
       </main>
+
+      <%= render 'shared/delete_modal' %>
     <% end %>
   </body>
 </html>
