@@ -81,3 +81,5 @@ gem "ruby-openai"
 gem "devise"
 
 gem "tailwindcss-rails", "~> 4.4"
+
+gem 'docx', '~> 0.7.0'

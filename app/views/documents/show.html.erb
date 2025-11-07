@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-6">
+      <%= link_to '← Back to Documents', documents_path, class: 'text-blue-600 hover:text-blue-800' %>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h1 class="text-3xl font-bold mb-2"><%= @document.title %></h1>
+          <p class="text-gray-600">
+            Uploaded <%= time_ago_in_words(@document.created_at) %> ago
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <%= link_to 'Download', download_document_path(@document), class: 'px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700' %>
+          <%= link_to 'Delete', document_path(@document), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: 'px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-6">
+      <h2 class="text-xl font-bold mb-4">Extracted Content</h2>
+      <div class="prose max-w-none whitespace-pre-wrap text-gray-800">
+        <% if @document.content.present? %>
+          <%= @document.content %>
+        <% else %>
+          <p class="text-gray-500 italic">No text content extracted.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
