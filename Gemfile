@@ -82,7 +82,7 @@ gem "devise"
 
 gem "tailwindcss-rails", "~> 4.4"
 
-gem "docx", "~> 0.7.0"
+gem "docx", "~> 0.10.0"
 
 gem "pdf-reader", "~> 2.10"
 
