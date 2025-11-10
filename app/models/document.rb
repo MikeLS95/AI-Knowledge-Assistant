@@ -36,13 +36,13 @@ class Document < ApplicationRecord
     return unless file.attached?
 
     self.content = case file.content_type
-                   when "application/pdf"
+    when "application/pdf"
                      extract_pdf_content
-                   when "text/plain"
+    when "text/plain"
                      extract_text_content
-                   when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                      extract_docx_content
-                   end
+    end
 
     save if content.present?
   end

@@ -7,6 +7,6 @@ class CreateDocuments < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :documents, [:user_id, :created_at]
+    add_index :documents, :user_id, :created_at
   end
 end
