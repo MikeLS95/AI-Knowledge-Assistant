@@ -36,11 +36,11 @@ class Document < ApplicationRecord
     return unless file.attached?
 
     self.content = case file.content_type
-                   when 'application/pdf'
+                   when "application/pdf"
                      extract_pdf_content
-                   when 'text/plain'
+                   when "text/plain"
                      extract_text_content
-                   when 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                   when "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                      extract_docx_content
                    end
 
@@ -48,7 +48,7 @@ class Document < ApplicationRecord
   end
 
   def extract_pdf_content
-    require 'pdf/reader'
+    require "pdf/reader"
 
     file.open do |temp_file|
       reader = PDF::Reader.new(temp_file)
@@ -61,14 +61,14 @@ class Document < ApplicationRecord
   end
 
   def extract_text_content
-    file.download.force_encoding('UTF-8')
+    file.download.force_encoding("UTF-8")
   rescue => e
     Rails.logger.error("Text extraction error: #{e.message}")
     ""
   end
 
   def extract_docx_content
-    require 'docx'
+    require "docx"
 
     file.open do |temp_file|
       doc = Docx::Document.open(temp_file)
